@@ -7,6 +7,8 @@ cards = ["🍎", "🍌", "🍇", "🍒", "🍉", "🍓", "🥝", "🍍"]*2
 rd.shuffle(cards)
 
 first_card = None
+second_card = None
+matched_cards = set()
 
 window = tk.Tk()
 window.title("Memory Card Game")
@@ -20,7 +22,11 @@ for i in range(4):
 
 
 def card_clicked(index, button):
-    global first_card
+    global first_card, second_card
+
+    # Returns when an already matched card is clicked
+    if index in matched_cards:
+        return
 
     # First Card
     if(first_card == None):
@@ -29,7 +35,20 @@ def card_clicked(index, button):
 
     # Second Card
     else:
+        second_card = index
         button.config(text=cards[index])
+
+        # Same card clicked twice
+        if(first_card == second_card):
+            return
+
+        # Matched Pair
+        if(cards[first_card] == cards[second_card]):
+            matched_cards.add(first_card)
+            matched_cards.add(second_card)
+
+            first_card = None
+            second_card = None
 
 
 # Board Window
