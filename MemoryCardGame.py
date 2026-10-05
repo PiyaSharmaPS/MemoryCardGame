@@ -1,4 +1,10 @@
 import tkinter as tk
+import random as rd
+
+# Variables
+cards = ["🍎", "🍌", "🍇", "🍒", "🍉", "🍓", "🥝", "🍍"]*2
+# Shuffled card list
+rd.shuffle(cards)
 
 window = tk.Tk()
 window.title("Memory Card Game")
