@@ -25,7 +25,6 @@ for i in range(4):
 for i in range(7):
     window.grid_rowconfigure(i, weight = 1)
 
-
 def reset_game():
     global hide_job, busy, first_card, second_card, first_button, second_button, moves
     
@@ -47,7 +46,6 @@ def reset_game():
     moves_label.config(text = "Moves: 0")
     win_label.config(text = "")
 
-
 # Title label
 title_label = tk.Label(window, text = "----Memory Card Game----", font = ("Arial", 20, "bold"))
 title_label.grid(row = 0, column = 0, columnspan = 4)
@@ -64,7 +62,6 @@ reset_button.grid(row = 1, column = 2, columnspan = 2)
 win_label = tk.Label(window, text = "", font = ("Arial", 16, "bold"))
 win_label.grid(row =6, column = 0, columnspan = 4)
 
-
 def hide_cards():
     global busy, hide_job, first_card, second_card, first_button, second_button
 
@@ -77,8 +74,7 @@ def hide_cards():
     first_button = None
     second_button = None
     busy = False
-    hide_job = None
-
+    hide_job = None  
 
 def card_clicked(index, button):
     global hide_job, busy, first_card, second_card, first_button, second_button, moves
@@ -131,7 +127,6 @@ def card_clicked(index, button):
             busy = True
             hide_job = window.after(1000, hide_cards)
 
-
 # Board Window
 for row in range(4):
     for column in range(4):
@@ -141,5 +136,4 @@ for row in range(4):
         button.config(command= lambda i=index, b=button: card_clicked(i,b), font = ("Arial", 28), relief = "solid", borderwidth = 2)
         button.grid(row=row+2, column=column, padx = 5, pady = 5, sticky = "nsew")
     
-
 window.mainloop()
